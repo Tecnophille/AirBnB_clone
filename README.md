@@ -310,7 +310,7 @@ No known bugs at this time.
 
 ## Authors
 
-Onifade Olanrewaju - [Github](https://github.com/Amoo89) / [Twitter](https://twitter.com/Onifade Olanrewaju)
+Onifade Olanrewaju - [Github](https://github.com/Amoo89) / [Twitter](https://twitter.com/Amooonifade)
 
 Oliver Samuel - [Github](https://github.com/tecnophille) / [Twitter](https://twitter.com/tecnophille)
 
