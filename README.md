@@ -1,6 +1,6 @@
 # AirBnB clone - RESTful API
 
-The RESTful API is the third segment of the AirBnB project at Holberton School that will collectively cover fundamental concepts of higher level programming. The goal of AirBnB project is to eventually deploy our server a simple copy of the AirBnB Website(HBnB). A RESTful API is created in this segment to manage requests for the AirBnB(HBnB) website.
+The RESTful API is the third segment of the AirBnB project during ALX SE program that will collectively cover fundamental concepts of higher level programming. The goal of AirBnB project is to eventually deploy our server a simple copy of the AirBnB Website(HBnB). A RESTful API is created in this segment to manage requests for the AirBnB(HBnB) website.
 
 
 
@@ -46,7 +46,7 @@ This project is interpreted/tested on Ubuntu 14.04 LTS using python3 (version 3.
 
 ## Installation
 
-* Clone this repository: `git clone "https://github.com/alexaorrico/AirBnB_clone.git"`
+* Clone this repository: `git clone "https://github.com/Tecnophille/AirBnB_clone.git"`
 
 * Access AirBnb directory: `cd AirBnB_clone`
 
@@ -310,23 +310,9 @@ No known bugs at this time.
 
 ## Authors
 
-Alexa Orrico - [Github](https://github.com/alexaorrico) / [Twitter](https://twitter.com/alexa_orrico)  
+Onifade Olanrewaju - [Github](https://github.com/Amoonu / [Twitter](https://twitter.com/Amoonu)
 
-
-
-Jennifer Huang - [Github](https://github.com/jhuang10123) / [Twitter](https://twitter.com/earthtojhuang)
-
-
-
-Alejandro Medina - [Github](https://github.com/mellab) / [Twitter](https://twitter.com/MentalAbduction)
-
-
-
-Luis Chaparro - [Github](https://github.com/luischaparroc) / [Twitter](https://twitter.com/luischaparroc)
-
-
-
-Second part of Airbnb: Joann Vuong
+Oliver Samuel - [Github](https://github.com/tecnophille) / [Twitter](https://twitter.com/tecnophille)
 
 ## License
 
