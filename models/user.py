@@ -1,26 +1,47 @@
-cascade="all, delete, delete-orphan",
-        backref="user"
-    )
-    reviews = relationships(
-        "Review",
-        cascade="all, delete, delete-orphan",
-        backref="user"
-    )
-  else:
-    email =""
-    password = ""
-    first_name = ""
-    last_name = ""
+#!/usr/bin/python3
+""" holds class User"""
+import hashlib
+import models
+from models.base_model import BaseModel, Base
+from os import getenv
+import sqlalchemy
+from sqlalchemy import Column, String
+from sqlalchemy.orm import relationship
 
-  def_init_(self, args, *kwargs):
-    """initializes user"""
-    super()._init_(args, *kwargs)
 
-  def_setattr_(self, _name: str, _value) -> None:
-    '''Sets an attribute of this class to a given value'''
-    if _name == 'password'
-        if type(_value) is str:
-            m = hashlib.md5(bytes(_value, 'utf-8'))
-            super()._setattr_(_name, m.hexdigest())
+class User(BaseModel, Base):
+    """Representation of a user """
+    if models.storage_t == 'db':
+        __tablename__ = 'users'
+        email = Column(String(128), nullable=False)
+        password = Column(String(128), nullable=False)
+        first_name = Column(String(128), nullable=True)
+        last_name = Column(String(128), nullable=True)
+        places = relationship(
+            "Place",
+            cascade="all, delete, delete-orphan",
+            backref="user"
+        )
+        reviews = relationship(
+            "Review",
+            cascade="all, delete, delete-orphan",
+            backref="user"
+        )
+    else:
+        email = ""
+        password = ""
+        first_name = ""
+        last_name = ""
+
+    def __init__(self, *args, **kwargs):
+        """initializes user"""
+        super().__init__(*args, **kwargs)
+
+    def __setattr__(self, __name: str, __value) -> None:
+        '''Sets an attribute of this class to a given value.'''
+        if __name == 'password':
+            if type(__value) is str:
+                m = hashlib.md5(bytes(__value, 'utf-8'))
+                super().__setattr__(__name, m.hexdigest())
         else:
-            super()._setattr_(_name, _value)
+            super().__setattr__(__name, __value)
