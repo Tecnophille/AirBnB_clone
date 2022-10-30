@@ -1,24 +1,16 @@
 #!/usr/bin/python3
-# -*- coding: utf-8 -*-
-"""City Module
-
-This Module inherits from BaseModel class.
-City Module contains the attributes to be assigned
-to the cities.
 """
-
+City class, a subclass of BaseModel
+"""
 from models.base_model import BaseModel
 
 
 class City(BaseModel):
-    """City Class
-
-    This is the City Class ...
-
-    Attributes:
-        state_id (str): The UUID of the State the City belongs to
-        name (str): The City name
-
     """
-    state_id = ''
-    name = ''
+    A subclass of BaseModel class
+    Public class attributes:
+        state_id: (str) will be State.id
+        name:     (str)
+    """
+    state_id = ""
+    name = ""

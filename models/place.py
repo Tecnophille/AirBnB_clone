@@ -1,36 +1,30 @@
 #!/usr/bin/python3
-# -*- coding: utf-8 -*-
-"""Place Module
-
-This Module inherits from BaseModel class.
-Place Module contains the attributes to be assigned
-to the Places created.
 """
-
+Place class, a subclass of BaseModel class
+"""
 from models.base_model import BaseModel
 
 
 class Place(BaseModel):
-    """Place Class
-
-    Attributes:
-        city_id (str): The UUID of the City the Place is located in
-        user_id (str): The UUID of the User of the Place
-        name (str): The Place name
-        description (str): The Place description
-        number_rooms (int): The number of rooms in the Place
-        number_bathrooms (int): The number of bathrooms in the Place
-        max_guest (int): The maximum number of guests for the Place
-        price_by_night (int): The price per night
-        latitude (float): The latitude of the Place
-        longitude (float): The longitude of the Place
-        amenity_ids (list): A list that contains all the Amenities in the Place
-
     """
-    city_id = ''
-    user_id = ''
-    name = ''
-    description = ''
+    A subclass of BaseModel class
+    Public class attributes:
+        city_id:             (str) will be City.id
+        user_id:             (str) will be User.id
+        name:                (str)
+        description:         (str)
+        number_rooms:        (int) 0
+        number_bathrooms:    (int) 0
+        max_guest:           (int) 0
+        price_by_night:      (int) 0
+        latitude:            (float) 0.0
+        longitude:           (float) 0.0
+        amenity_ids:         (list) will be Amenity.id
+    """
+    city_id = ""
+    user_id = ""
+    name = ""
+    description = ""
     number_rooms = 0
     number_bathrooms = 0
     max_guest = 0

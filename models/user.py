@@ -1,26 +1,15 @@
 #!/usr/bin/python3
-# -*- coding: utf-8 -*-
-"""User Module
-
-This Module inherits from BaseModel class.
-User Module contains the user information.
-
+"""user class, subclass of BaseModel
 """
 
 from models.base_model import BaseModel
+import json
 
 
 class User(BaseModel):
-    """User Class
+    '''subclass of BaseModel class'''
 
-    Attributes:
-        email (str): The User email
-        password (str): The User password
-        first_name (str): The first name of the User
-        last_name (str): The last name of the User
-
-    """
-    email = ''
-    password = ''
-    first_name = ''
-    last_name = ''
+    email = ""
+    password = ""
+    first_name = ""
+    last_name = ""

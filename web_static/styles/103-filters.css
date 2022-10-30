@@ -1,15 +1,23 @@
-/* search bar */
-div.container {
-    max-width: 1000px;
-    margin: 30px auto;
-    /* text-align: center; */
-}
 section.filters {
-    background-color: white;
+    background-color: #FFFFFF;
     height: 70px;
     width: 100%;
     border: 1px solid #DDDDDD;
     border-radius: 4px;
+}
+
+section.filters:before,
+section.filters:after {
+  content: "";
+  display: table;
+}
+
+section.filters:after {
+  clear: both;
+}
+
+section.filters {
+  *zoom: 1;
 }
 section.filters button {
     background-color: #FF5A5F;
@@ -43,6 +51,9 @@ section.filters button:hover {
     margin-bottom: 0px;
     text-align: left;
     margin-left: 30px;
+    -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
 }
 .locations h4,
 .amenities h4 {
@@ -52,6 +63,9 @@ section.filters button:hover {
     margin-bottom: 0px;
     text-align: left;
     margin-left: 30px;
+    -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
 }
 /* display location and amenities options upon hover */
 .popover {
@@ -59,11 +73,16 @@ section.filters button:hover {
     background-color: #FAFAFA;
     border: 1px solid #DDDDDD;
     border-radius: 4px;
-    position: relative;
-    z-index: 1;
+    position: absolute;
+    display: none;
+    width: 100%;
+    /* z-index: 1; */
 }
 .popover h2 {
     font-size: 16px;
+    -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
 }
 li {
     list-style-type: none;
@@ -73,4 +92,36 @@ li {
 .locations:hover .popover,
 .amenities:hover .popover {
     display: block;
+}
+
+/* Swap to vertical layout for small screens */
+@media only screen and (max-width: 720px) {
+    .filters {
+      display: flex;
+      flex-direction: row;
+      height: auto;
+    }
+    section.filters button {
+        flex: 1;
+    }
+  
+    .filters .locations,
+    .filters .amenities {
+      flex: 2;
+      height: auto;
+      width: 50%;
+      border-bottom: 1px solid #DDDDDD;
+    }
+  
+    .filters .locations:hover .popover,
+    .filters .amenities:hover .popover {
+      margin-left: auto;
+      position: relative;
+      width: 50%;
+      z-index: 1;
+    }
+  
+    .filters .amenities:hover {
+      border-top: 1px solid #DDDDDD;
+    }
 }

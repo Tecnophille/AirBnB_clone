@@ -1,25 +1,23 @@
-section.places {
-	display: flex;
-	flex-flow: row wrap;
-	justify-content: center;
-}
+.places {
+    text-align: center;
+  }
+  .places h1 {
+    font-size: 30px;
+    text-align: left;
+  }
+  article {
+    width: 390px;
+    border: 1px solid #FF5A5F;
+    border-radius: 4px;
+    padding: 20px;
+    margin: 20px;
+    display: inline-block;
+  }
+  article h2 {
+    font-size: 30px;
+    text-align: center;
+  }
 
-section.places h1 {
-	font-size: 30px;
-	margin-left: 20px;
-	width: 100%;
-}
-
-article {
-	display: flex;
-	border: 1px solid #FF5A5F;
-	border-radius: 4px;
-	margin: 20px;
-	padding: 20px;
-	width: 390px;
-	justify-content: center;
-}
-
-article h2 {
-	font-size: 30px;
-}
+  footer {
+    position: relative;
+  }

@@ -63,6 +63,58 @@
     margin-bottom: 10px;
     margin-top: 10px;
   }
+/* Amenity and Reviews */
+.places article .amenities,
+.places article .reviews{
+  text-align: left;
+	margin: 40px 0 40px;
+	width: 100%;
+	padding: 0;
+    
+}
+.places article .amenities h2,
+.places article .reviews h2{
+	size: 16px;	
+	border-bottom: 1px solid #DDDDDD;
+}
+.places article .amenities ul,
+.places article .reviews ul{
+  padding: 0;
+  text-align: left;
+}
+
+ .places article .amenities ul li,
+.places article .amenities ul li{
+  /* height: 40px; */
+	line-height: 30px;
+	padding-left: 50px;
+}
+.places article .amenities ul li,
+.places article .reviews ul li{
+	background-position: top left;
+  background-size: 30px;
+	background-repeat: no-repeat;
+	list-style-type: none;
+}
+
+.places article .reviews ul li h3{
+	font-size: 14px;
+}
+.places article .reviews ul li p{
+	font-size: 12px;
+}
+.icon_wifi{
+	background-image: url("../images/icon_wifi.png");
+  
+}
+.icon_tv{
+	background-image: url("../images/icon_tv.png");
+  
+}
+.icon_pets{
+	background-image: url("../images/icon_pets.png");
+  
+}
 
 footer {
    position: relative;

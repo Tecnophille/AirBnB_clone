@@ -1,50 +1,55 @@
+/* search bar */
+div.container {
+    max-width: 1000px;
+    margin: 30px auto;
+    text-align: center;
+}
 section.filters {
-	align-items: center;
-	display: flex;
-	background-color: white;
-	border: 1px solid #DDDDDD;
-	border-radius: 4px;
-	height: 70px;
-	width: 100%;
+    background-color: white;
+    height: 70px;
+    width: 100%;
+    border: 1px solid #DDDDDD;
+    border-radius: 4px;
 }
-
-div.locations,
-div.amenities {
-	padding: 0 30px;
-	height: 100%;
-	width: 25%;
+section.filters button {
+    background-color: #FF5A5F;
+    height: 48px;
+    width: 20%;
+    border: 0;
+    border-radius: 4px;
+    font-size: 18px;
+    color: #FFFFFF;
+    float: right;
+    margin: 11px 30px;
 }
-
-div.locations {
-	border-right: 1px solid #DDDDDD;
+section.filters button:hover {
+    opacity: .9;
 }
-
-h3 {
-	font-weight: 600;
-	margin: 10px 0px 0px 0px;
+/* location and amenities part of search bar */
+.locations,
+.amenities {
+    height: 100%;
+    width: 25%;
+    float: left;
 }
-
-h4 {
-	font-size: 14px;
-	font-weight: 400;
-	margin: 0;
+.locations {
+    border-right: 1px solid #DDDDDD;
 }
-
-.btn {
-	color: #FFFFFF;
-	background-color: #FF5A5F;
-	border: 0;
-	border-radius: 4px;
-	font-size: 18px;
-	height: 48px;
-	width: 20%;
+.locations h3,
+.amenities h3 {
+    font-weight: 600;
+    font-size: 16px;
+    margin-top: 20px;
+    margin-bottom: 0px;
+    text-align: left;
+    margin-left: 30px;
 }
-
-.btn-filters {
-	margin-left: auto;
-	margin-right: 30px;
-}
-
-.btn-filters:hover {
-	opacity: 90%;
+.locations h4,
+.amenities h4 {
+    font-weight: 400;
+    font-size: 14px;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    text-align: left;
+    margin-left: 30px;
 }

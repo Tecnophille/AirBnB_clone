@@ -1,1 +1,1 @@
-# Scripts Functionalities
+# AirBnB clone - Web static
