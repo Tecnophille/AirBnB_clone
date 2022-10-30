@@ -1,66 +1,47 @@
 #!/usr/bin/python3
-"""
-Unit tests for console using Mock module from python standard library
-Checks console for capturing stdout into a StringIO object
-"""
-
-import os
-import sys
-import unittest
-from unittest.mock import create_autospec, patch
-from io import StringIO
-from console import HBNBCommand
-from models import storage
-from models.base_model import BaseModel
-from models.user import User
-from models.state import State
-from models.city import City
+"""Test Console"""
 from models.amenity import Amenity
+from models.base_model import BaseModel
+from models.city import City
 from models.place import Place
 from models.review import Review
+from models.state import State
+import unittest
 
 
 class TestConsole(unittest.TestCase):
     """
-    Unittest for the console model
+    This test checks if all required classes
+    are created correctly.
     """
-
-    def setUp(self):
-        """Redirecting stdin and stdout"""
-        self.mock_stdin = create_autospec(sys.stdin)
-        self.mock_stdout = create_autospec(sys.stdout)
-        self.err = ["** class name missing **",
-                    "** class doesn't exist **",
-                    "** instance id missing **",
-                    "** no instance found **",
-                    ]
-
-        self.cls = ["BaseModel",
-                    "User",
-                    "State",
-                    "City",
-                    "Place",
-                    "Amenity",
-                    "Review"]
-
-    def create(self, server=None):
+    def test_class(self):
         """
-        Redirects stdin and stdout to the mock module
+        This test checks if all required classes
+        are present
         """
-        return HBNBCommand(stdin=self.mock_stdin, stdout=self.mock_stdout)
+        city1 = City()
+        amenity1 = Amenity()
+        state1 = State()
+        rev1 = Review()
+        place1 = Place()
+        self.assertEqual(city1.__class__.__name__, "City")
+        self.assertEqual(amenity1.__class__.__name__, "Amenity")
+        self.assertEqual(state1.__class__.__name__, "State")
+        self.assertEqual(rev1.__class__.__name__, "Review")
+        self.assertEqual(place1.__class__.__name__, "Place")
 
-    def last_write(self, nr=None):
-        """Returns last n output lines"""
-        if nr is None:
-            return self.mock_stdout.write.call_args[0][0]
-        return "".join(map(lambda c: c[0][0],
-                           self.mock_stdout.write.call_args_list[-nr:]))
-
-    def test_quit(self):
-        """Quit command"""
-        cli = self.create()
-        self.assertTrue(cli.onecmd("quit"))
-
-
-if __name__ == '__main__':
-    unittest.main()
+    def test_father(self):
+        """
+        This test checks if all required classes
+        inherit correcly from BaseModel
+        """
+        city1 = City()
+        amenity1 = Amenity()
+        state1 = State()
+        rev1 = Review()
+        place1 = Place()
+        self.assertTrue(issubclass(city1.__class__, BaseModel))
+        self.assertTrue(issubclass(amenity1.__class__, BaseModel))
+        self.assertTrue(issubclass(state1.__class__, BaseModel))
+        self.assertTrue(issubclass(rev1.__class__, BaseModel))
+        self.assertTrue(issubclass(place1.__class__, BaseModel))

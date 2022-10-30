@@ -1,26 +1,36 @@
 #!/usr/bin/python3
-"""
-Test suits for amenities
-"""
-
-import os
-import models
-import unittest
-from datetime import datetime
+"""Test City"""
+from models.amenity import Amenity
 from models.base_model import BaseModel
+from models.city import City
+from models.place import Place
+from models.review import Review
+from models.state import State
+import pep8
+import unittest
 
 
-class TestCity(unittest.TestCase):
+class Testcity(unittest.TestCase):
     """
-    Tests for amenities
+    Unittests for the City class.
     """
+    def test_pep8_conformance_city(self):
+        """Test that we conform to PEP8."""
+        pep8style = pep8.StyleGuide(quiet=True)
+        result = pep8style.check_files(['models/city.py'])
+        self.assertEqual(result.total_errors, 0,
+                         "Found code style errors (and warnings).")
 
-    def test_name(self):
+    def test_class(self):
         """
-        Tests for name inputs
+        Tests if class is named correctly.
         """
-        pass
+        city1 = City()
+        self.assertEqual(city1.__class__.__name__, "City")
 
-
-if __name__ == '__main__':
-    unittest.main()
+    def test_father(self):
+        """
+        Tests if Class inherits from BaseModel.
+        """
+        city1 = City()
+        self.assertTrue(issubclass(city1.__class__, BaseModel))

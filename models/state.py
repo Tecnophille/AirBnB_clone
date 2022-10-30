@@ -1,15 +1,20 @@
 #!/usr/bin/python3
+# -*- coding: utf-8 -*-
+"""State Module
+
+This Module inherits from BaseModel class.
+State Module contains the attributes to be assigned
+to the States.
 """
-Defines the State class
-"""
+
 from models.base_model import BaseModel
 
 
 class State(BaseModel):
-    """Represent a state
+    """State Class
 
     Attributes:
-        name (str): The name of the state
+        name (str): The State name
 
     """
-    name = ""
+    name = ''
