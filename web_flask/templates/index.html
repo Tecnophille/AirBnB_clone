@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<HTML lang="en">
+  <HEAD>
+    <META charset="utf-8">
+    <META name="viewport" content="width=device-width, initial-scale=1">
+    <TITLE>HolbertonBnB</TITLE>
+
+    <!-- Favicon -->
+    <LINK rel="shortcut icon" href="{{ url_for('static', filename='images/icon.png') + '?' + cache_id }}">
+    <!-- Personal CSS -->
+    <LINK rel="stylesheet" href="{{ url_for('static', filename='styles/reset.css') + '?' + cache_id }}">
+    <LINK rel="stylesheet" href="{{ url_for('static', filename='styles/common.css') + '?' + cache_id }}">
+    <LINK rel="stylesheet" href="{{ url_for('static', filename='styles/header.css') + '?' + cache_id }}">
+    <LINK rel="stylesheet" href="{{ url_for('static', filename='styles/footer.css') + '?' + cache_id }}">
+    <LINK rel="stylesheet" href="{{ url_for('static', filename='styles/filters.css') + '?' + cache_id }}">
+    <LINK rel="stylesheet" href="{{ url_for('static', filename='styles/places.css') + '?' + cache_id }}">
+    <!-- Font Awesome CDN -->
+    <SCRIPT src="https://kit.fontawesome.com/051d5c98a7.js"></SCRIPT>
+    <!-- jQuery CDN -->
+    <SCRIPT src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></SCRIPT>
+    <!-- Personal JS -->
+    <SCRIPT src="{{ url_for('static', filename='scripts/dynamic.js') + '?' + cache_id }}"></SCRIPT>
+  </HEAD>
+
+  <BODY>
+
+    <A href="https://github.com/bdbaraban/holbertonbnb" target="_blank" class="github">
+      <IMG
+        width="180"
+        height="180"
+        src="https://github.blog/wp-content/uploads/2008/12/forkme_right_red_aa0000.png?resize=149%2C149"
+        class="attachment-full size-full"
+        alt="Fork me on GitHub"
+        data-recalc-dims="1">
+    </A>
+
+    <HEADER>
+      <!-- API status circle -->
+      <DIV id="api_status" class="available"></DIV>
+    </HEADER>
+
+    <MAIN>
+      <DIV class="container">
+
+        <!-- Filters search bar -->
+	      <SECTION class="filters" role="search">
+
+          <!-- Locations filter -->
+	        <DIV class="locations">
+	          <H3>States</H3>
+	          <H4>&nbsp;</H4>
+	          <UL class="popover">
+            {% for state in states.values()|sort(attribute="name") %}
+            <H2>
+              <INPUT type="checkbox" data-id="{{ state.id }}" data-name="{{ state.name }}">
+                <STRONG>{{ state.name }}</STRONG>
+              </INPUT>
+            </H2>
+	            <UL>
+		          {% for city in state.cities|sort(attribute="name") %}
+		            <LI>
+                  <INPUT type="checkbox" data-id="{{ city.id }}" data-name="{{ city.name }}">
+                    {{ city.name }}
+                  </INPUT>
+                </LI>
+		          {% endfor %}
+	            </UL>
+	          {% endfor %}
+	          </UL>
+	        </DIV>
+
+          <!-- Amenities filter -->
+	        <DIV class="amenities">
+	          <H3>Amenities</H3>
+	          <H4>&nbsp;</H4>
+	          <UL class="popover">
+	          {% for amenity in amenities.values()|sort(attribute="name") %}
+	            <LI>
+                <INPUT type="checkbox" data-id="{{ amenity.id }}" data-name="{{ amenity.name }}">
+                  {{ amenity.name }}
+                </INPUT>
+              </LI>
+	          {% endfor %}
+	          </UL>
+	        </DIV>
+
+          <!-- Search button -->
+	        <BUTTON>Search</BUTTON>
+	      </SECTION>
+
+        <!-- Places grid -->
+	      <SECTION class="places">
+	        <H1>Places</H1>
+	      </SECTION>
+      </DIV>
+    </MAIN>
+
+    <FOOTER>
+      Holberton School
+    </FOOTER>
+
+  </BODY>
+
+</HTML>

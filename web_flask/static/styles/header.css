@@ -1,0 +1,27 @@
+/*
+ * === Header style ===
+ */
+
+/* Header style */
+header {
+  align-items: center;
+  background: #fff url('../images/logo.png') 20px center no-repeat;
+  border-bottom: 1px solid #ccc;
+  display: flex;
+  height: 70px;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+/* API status circle style */
+#api_status {
+  border-radius: 50%;
+  background-color: #ccc;
+  height: 40px;
+  margin-right: 20px;
+  width: 40px;
+}
+
+#api_status.available {
+  background-color: #ff545f;
+}

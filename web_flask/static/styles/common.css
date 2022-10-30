@@ -1,0 +1,44 @@
+/*
+ * === Global style ===
+ */
+
+/* Body style */
+body {
+  color: #484848;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  font: 14px Circular, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  min-height: 100vh;
+}
+
+/* Block horizontal scrolling */
+html,
+body {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+/* Main always fills page */
+main {
+  flex-grow: 1;
+  flex-shrink: 0;
+}
+
+/* Container style */
+.container {
+  margin: 30px auto;
+  max-width: 1000px;
+}
+
+/* Strong style */
+strong {
+  font-weight: bold;
+}
+
+/* GitHub fork me ribbon */
+.github {
+  right: 0;
+  position: absolute;
+  top: 0;
+}
