@@ -1,15 +1,14 @@
 header {
-    width: 100%;
-    background-color: white;
+    background-color: #fff;
     height: 70px;
+    width: 100%;
     border-bottom: 1px solid #CCCCCC;
-    display: flex;
-    align-items: center;
 }
 
 .logo {
-    width: 142px;
-    height: 60px;
-    background: url("../images/logo.png") no-repeat center;
-    padding-left: 20px;
+    background: url("../images/logo.png") no-repeat;
+    background-position: left;
+    display: block;
+    height: 100%;
+    margin-left: 20px;
 }
