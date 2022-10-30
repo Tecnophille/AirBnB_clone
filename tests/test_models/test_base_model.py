@@ -1,157 +1,64 @@
 #!/usr/bin/python3
-"""
-Unit Test for BaseModel Class
-"""
+"""Test BaseModel for expected behavior and documentation"""
 from datetime import datetime
 import inspect
-import json
 import models
-from os import environ, stat
-import pep8
+import pep8 as pycodestyle
+import time
 import unittest
-
+from unittest import mock
 BaseModel = models.base_model.BaseModel
-STORAGE_TYPE = environ.get('HBNB_TYPE_STORAGE')
+module_doc = models.base_model.__doc__
 
 
 class TestBaseModelDocs(unittest.TestCase):
-    """Class for testing BaseModel docs"""
-
-    all_funcs = inspect.getmembers(BaseModel, inspect.isfunction)
+    """Tests to check the documentation and style of BaseModel class"""
 
     @classmethod
-    def setUpClass(cls):
-        print('\n\n.................................')
-        print('..... Testing Documentation .....')
-        print('.....  For BaseModel Class  .....')
-        print('.................................\n\n')
+    def setUpClass(self):
+        """Set up for docstring tests"""
+        self.base_funcs = inspect.getmembers(BaseModel, inspect.isfunction)
 
-    def test_doc_file(self):
-        """... documentation for the file"""
-        expected = '\nBaseModel Class of Models Module\n'
-        actual = models.base_model.__doc__
-        self.assertEqual(expected, actual)
+    def test_pep8_conformance(self):
+        """Test that models/base_model.py conforms to PEP8."""
+        for path in ['models/base_model.py',
+                     'tests/test_models/test_base_model.py']:
+            with self.subTest(path=path):
+                errors = pycodestyle.Checker(path).check_all()
+                self.assertEqual(errors, 0)
 
-    def test_doc_class(self):
-        """... documentation for the class"""
-        expected = ('\n        attributes and functions for BaseModel class\n'
-                    '    ')
-        actual = BaseModel.__doc__
-        self.assertEqual(expected, actual)
+    def test_module_docstring(self):
+        """Test for the existence of module docstring"""
+        self.assertIsNot(module_doc, None,
+                         "base_model.py needs a docstring")
+        self.assertTrue(len(module_doc) > 1,
+                        "base_model.py needs a docstring")
 
-    def test_all_function_docs(self):
-        """... tests for ALL DOCS for all functions in db_storage file"""
-        all_functions = TestBaseModelDocs.all_funcs
-        for function in all_functions:
-            self.assertIsNotNone(function[1].__doc__)
+    def test_class_docstring(self):
+        """Test for the BaseModel class docstring"""
+        self.assertIsNot(BaseModel.__doc__, None,
+                         "BaseModel class needs a docstring")
+        self.assertTrue(len(BaseModel.__doc__) >= 1,
+                        "BaseModel class needs a docstring")
 
-    def test_pep8_base_model(self):
-        """... base_model.py conforms to PEP8 Style"""
-        pep8style = pep8.StyleGuide(quiet=True)
-        errors = pep8style.check_files(['models/base_model.py'])
-        self.assertEqual(errors.total_errors, 0, errors.messages)
+    def test_func_docstrings(self):
+        """Test for the presence of docstrings in BaseModel methods"""
+        for func in self.base_funcs:
+            with self.subTest(function=func):
+                self.assertIsNot(
+                    func[1].__doc__,
+                    None,
+                    "{:s} method needs a docstring".format(func[0])
+                )
+                self.assertTrue(
+                    len(func[1].__doc__) > 1,
+                    "{:s} method needs a docstring".format(func[0])
+                )
 
-    def test_file_is_executable(self):
-        """... tests if file has correct permissions so user can execute"""
-        file_stat = stat('models/base_model.py')
-        permissions = str(oct(file_stat[0]))
-        actual = int(permissions[5:-2]) >= 5
-        self.assertTrue(actual)
 
-
-@unittest.skipIf(STORAGE_TYPE == 'db', 'DB Storage does not store BaseModel')
-class TestBaseModelInstances(unittest.TestCase):
-    """testing for class instances"""
-
-    @classmethod
-    def setUpClass(cls):
-        print('\n\n.................................')
-        print('....... Testing Functions .......')
-        print('.....  For BaseModel Class  .....')
-        print('.................................\n\n')
-
-    def setUp(self):
-        """initializes new BaseModel instance for testing"""
-        self.model = BaseModel()
-
+class TestBaseModel(unittest.TestCase):
+    """Test the BaseModel class"""
     def test_instantiation(self):
-<<<<<<< HEAD
-        """... checks if BaseModel is properly instantiated"""
-        self.assertIsInstance(self.model, BaseModel)
-
-    def test_to_string(self):
-        """... checks if BaseModel is properly casted to string"""
-        my_str = str(self.model)
-        my_list = ['BaseModel', 'id', 'created_at']
-        actual = 0
-        for sub_str in my_list:
-            if sub_str in my_str:
-                actual += 1
-        self.assertTrue(3 == actual)
-
-    def test_to_string(self):
-        """... checks if BaseModel is properly casted to string"""
-        my_str = str(self.model)
-        my_list = ['BaseModel', 'id', 'created_at']
-        actual = 0
-        for sub_str in my_list:
-            if sub_str in my_str:
-                actual += 1
-        self.assertTrue(3 == actual)
-
-    def test_instantiation_no_updated(self):
-        """... should not have updated attribute"""
-        my_str = str(self.model)
-        actual = 0
-        if 'updated_at' in my_str:
-            actual += 1
-        self.assertTrue(0 == actual)
-
-    def test_save(self):
-        """... save function should add updated_at attribute"""
-        self.model.save()
-        actual = type(self.model.updated_at)
-        expected = type(datetime.now())
-        self.assertEqual(expected, actual)
-
-    def test_to_json(self):
-        """... to_json should return serializable dict object"""
-        my_model_json = self.model.to_json()
-        actual = 1
-        try:
-            serialized = json.dumps(my_model_json)
-        except:
-            actual = 0
-        self.assertTrue(1 == actual)
-
-    def test_json_class(self):
-        """... to_json should include class key with value BaseModel"""
-        my_model_json = self.model.to_json()
-        actual = None
-        if my_model_json['__class__']:
-            actual = my_model_json['__class__']
-        expected = 'BaseModel'
-        self.assertEqual(expected, actual)
-
-    def test_name_attribute(self):
-        """... add name attribute"""
-        self.model.name = "Holberton"
-        actual = self.model.name
-        expected = "Holberton"
-        self.assertEqual(expected, actual)
-
-    def test_number_attribute(self):
-        """... add number attribute"""
-        self.model.number = 98
-        actual = self.model.number
-        self.assertTrue(98 == actual)
-
-if __name__ == '__main__':
-    """
-    MAIN TESTS
-    """
-    unittest.main
-=======
         """Test that object is correctly created"""
         inst = BaseModel()
         self.assertIs(type(inst), BaseModel)
@@ -178,12 +85,12 @@ if __name__ == '__main__':
         tic = datetime.now()
         inst1 = BaseModel()
         toc = datetime.now()
-        self.assertTrue(inst1.created_at - tic < toc - tic)
+        self.assertTrue(tic <= inst1.created_at <= toc)
         time.sleep(1e-4)
         tic = datetime.now()
         inst2 = BaseModel()
         toc = datetime.now()
-        self.assertTrue(inst2.created_at - tic < toc - tic)
+        self.assertTrue(tic <= inst2.created_at <= toc)
         self.assertEqual(inst1.created_at, inst1.updated_at)
         self.assertEqual(inst2.created_at, inst2.updated_at)
         self.assertNotEqual(inst1.created_at, inst2.created_at)
@@ -251,4 +158,3 @@ if __name__ == '__main__':
         self.assertEqual(old_created_at, new_created_at)
         self.assertTrue(mock_storage.new.called)
         self.assertTrue(mock_storage.save.called)
->>>>>>> 429b12902ad54a2275d1e18069a59975e713e59d
